@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprenda a criar sua própria IA pessoal no WhatsApp em 30 minutos com o Clawdbot. Automatize tarefas, ganhe tempo e tenha um assistente 24/7.">
+    <meta name="keywords" content="IA, WhatsApp, Clawdbot, automação, assistente virtual, inteligência artificial, produtividade">
+    <meta name="author" content="Clawdbot">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tenha Sua Própria IA Pessoal no WhatsApp em 30 Minutos">
+    <meta property="og:description" content="Automatize tarefas, ganhe tempo e tenha um assistente 24/7 — sem pagar mensalidades caras de API">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/6366f1/ffffff?text=Clawdbot+Ebook">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tenha Sua Própria IA Pessoal no WhatsApp em 30 Minutos">
+    <meta name="twitter:description" content="Automatize tarefas, ganhe tempo e tenha um assistente 24/7 — sem pagar mensalidades caras de API">
+
+    <title>Clawdbot - Sua IA Pessoal no WhatsApp</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1b4b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 4px;
+        }
+
+        /* Gradient Animations */
+        .gradient-bg {
+            background: linear-gradient(-45deg, #1e1b4b, #312e81, #3730a3, #1e1b4b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Pulse Animation for CTA */
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.8); }
+        }
+
+        /* Chat Bubble Animation */
+        .chat-bubble {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .chat-bubble:nth-child(2) { animation-delay: 0.5s; }
+        .chat-bubble:nth-child(3) { animation-delay: 1s; }
+        .chat-bubble:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* FAQ Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🤖</span>
+                <span class="font-bold text-xl bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">Clawdbot</span>
+            </div>
+            <a href="#preco" class="hidden sm:inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105">
+                Garantir Acesso
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center pt-20 pb-16 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-500/20 rounded-full px-4 py-2 mb-6">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-sm text-primary-300">Disponível agora</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Tenha Sua Própria
+                        <span class="bg-gradient-to-r from-primary-400 via-purple-400 to-pink-400 bg-clip-text text-transparent glow-text">IA Pessoal</span>
+                        no WhatsApp em 30 Minutos
+                    </h1>
+
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Automatize tarefas, ganhe tempo e tenha um assistente 24/7 — sem pagar mensalidades caras de API
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="#preco" class="hotmart-fb inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:scale-105 pulse-glow">
+                            Quero Minha IA Agora
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </a>
+                        <a href="#como-funciona" class="inline-flex items-center justify-center gap-2 border border-gray-600 hover:border-primary-500 text-gray-300 hover:text-white px-8 py-4 rounded-full text-lg font-medium transition-all">
+                            Como Funciona
+                        </a>
+                    </div>
+
+                    <div class="flex items-center gap-6 text-sm text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Acesso Imediato</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>7 Dias de Garantia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Preview -->
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" class="relative">
+                    <div class="bg-gray-900/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-800 glow">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-800">
+                            <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-purple-500 rounded-full flex items-center justify-center text-2xl">🤖</div>
+                            <div>
+                                <div class="font-semibold">Clawdbot</div>
+                                <div class="text-sm text-green-400">Online</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="chat-bubble flex justify-end">
+                                <div class="bg-primary-600 rounded-2xl rounded-br-md px-4 py-3 max-w-xs">
+                                    <p class="text-sm">Me lembra de ligar pro contador amanhã às 10h</p>
+                                </div>
+                            </div>
+
+                            <div class="chat-bubble flex justify-start">
+                                <div class="bg-gray-800 rounded-2xl rounded-bl-md px-4 py-3 max-w-xs">
+                                    <p class="text-sm">Lembrete agendado! Vou te avisar amanhã às 10h para ligar pro contador.</p>
+                                </div>
+                            </div>
+
+                            <div class="chat-bubble flex justify-end">
+                                <div class="bg-primary-600 rounded-2xl rounded-br-md px-4 py-3 max-w-xs">
+                                    <p class="text-sm">Pesquisa as tendências de IA pra 2025</p>
+                                </div>
+                            </div>
+
+                            <div class="chat-bubble flex justify-start">
+                                <div class="bg-gray-800 rounded-2xl rounded-bl-md px-4 py-3 max-w-xs">
+                                    <p class="text-sm">Aqui está um resumo das principais tendências de IA para 2025: agentes autônomos, modelos multimodais...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema Section -->
+    <section class="py-20 bg-gray-900/50" id="problema">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Você Já Se Sentiu Assim?</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Milhões de pessoas enfrentam esses problemas diariamente...</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div data-aos="fade-up" data-aos-delay="0" class="bg-gray-900/50 border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-2xl mb-4">⏰</div>
+                    <h3 class="font-semibold text-lg mb-2">Sem Tempo</h3>
+                    <p class="text-gray-400 text-sm">Tarefas simples consomem horas do seu dia</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-gray-900/50 border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-2xl mb-4">🧠</div>
+                    <h3 class="font-semibold text-lg mb-2">Sobrecarregado</h3>
+                    <p class="text-gray-400 text-sm">Milhares de informações para processar</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-900/50 border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-2xl mb-4">💸</div>
+                    <h3 class="font-semibold text-lg mb-2">Gastando Demais</h3>
+                    <p class="text-gray-400 text-sm">Assinaturas de ferramentas que não usa direito</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-gray-900/50 border border-red-500/20 rounded-2xl p-6 hover:border-red-500/40 transition-all">
+                    <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-2xl mb-4">😤</div>
+                    <h3 class="font-semibold text-lg mb-2">Repetindo Trabalho</h3>
+                    <p class="text-gray-400 text-sm">Fazendo as mesmas coisas todo dia</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-primary-900/30 to-purple-900/30 rounded-3xl p-8 sm:p-12 border border-primary-500/20" data-aos="fade-up">
+                <h3 class="text-2xl sm:text-3xl font-bold text-center mb-8">E se você pudesse ter um assistente pessoal que...</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🧠</div>
+                        <p class="font-medium">Nunca esquece nada</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">🌙</div>
+                        <p class="font-medium">Trabalha 24h por dia</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">☕</div>
+                        <p class="font-medium">Custa menos que um café</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary-500/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">⚡</div>
+                        <p class="font-medium">Faz em segundos o que leva horas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solução Section -->
+    <section class="py-20" id="como-funciona">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2 mb-6">
+                        <span class="text-green-400">✓</span>
+                        <span class="text-sm text-green-400">A Solução</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+                        Apresentando o
+                        <span class="bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">Guia Completo</span>
+                        do Clawdbot
+                    </h2>
+
+                    <p class="text-xl text-gray-300 mb-6">
+                        Um ebook prático que te ensina a criar seu próprio assistente de IA — rodando no seu computador, conectado ao seu WhatsApp.
+                    </p>
+
+                    <p class="text-lg text-primary-400 font-semibold mb-8">
+                        Sem enrolação. Sem teoria demais. Direto ao ponto.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Passo a Passo Detalhado</h4>
+                                <p class="text-gray-400 text-sm">Screenshots e exemplos reais em cada etapa</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">10 Capítulos Práticos</h4>
+                                <p class="text-gray-400 text-sm">Da instalação aos casos de uso avançados</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Funciona em Qualquer Sistema</h4>
+                                <p class="text-gray-400 text-sm">Windows, Mac ou Linux — temos você coberto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left" class="relative">
+                    <div class="bg-gradient-to-br from-primary-600/20 to-purple-600/20 rounded-3xl p-8 border border-primary-500/30">
+                        <div class="bg-gray-900 rounded-2xl p-6 shadow-2xl">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="space-y-3 font-mono text-sm">
+                                <div class="text-gray-500">$ clawdbot start</div>
+                                <div class="text-green-400">Iniciando Clawdbot...</div>
+                                <div class="text-primary-400">Conectando ao WhatsApp...</div>
+                                <div class="text-green-400">QR Code gerado!</div>
+                                <div class="text-gray-500">$ Escaneie com seu WhatsApp</div>
+                                <div class="text-green-400 animate-pulse">Conectado com sucesso!</div>
+                                <div class="text-primary-400">Sua IA está pronta para uso.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Que Você Recebe Section -->
+    <section class="py-20 bg-gray-900/50" id="conteudo">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">O Que Você Vai Receber</h2>
+                <p class="text-gray-400 text-lg">Tudo que você precisa para começar hoje</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Ebook Principal -->
+                <div data-aos="fade-up" class="bg-gradient-to-br from-primary-900/40 to-purple-900/40 rounded-3xl p-8 border border-primary-500/30">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-primary-500/20 rounded-2xl flex items-center justify-center text-3xl">📘</div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Ebook Completo</h3>
+                            <p class="text-primary-400">PDF +50 páginas</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>10 capítulos práticos</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Passo a passo detalhado</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Screenshots e exemplos reais</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Atualizações gratuitas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Bônus -->
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-gray-900/50 rounded-3xl p-8 border border-yellow-500/30">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-yellow-500/20 rounded-2xl flex items-center justify-center text-3xl">🎁</div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Bônus Exclusivos</h3>
+                            <p class="text-yellow-400">Valor: R$ 97</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <div>
+                                <span class="font-semibold">Template SOUL.md</span>
+                                <p class="text-gray-400 text-sm">Personalidade pronta pra usar</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <div>
+                                <span class="font-semibold">Checklist de Configuração</span>
+                                <p class="text-gray-400 text-sm">Não esqueça nenhum passo</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <div>
+                                <span class="font-semibold">10 Prompts Poderosos</span>
+                                <p class="text-gray-400 text-sm">Comandos testados e otimizados</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <div>
+                                <span class="font-semibold">Guia de Troubleshooting</span>
+                                <p class="text-gray-400 text-sm">Resolva problemas rapidamente</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo do Ebook -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">O Que Você Vai Aprender</h2>
+                <p class="text-gray-400 text-lg">10 capítulos direto ao ponto</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div data-aos="fade-up" data-aos-delay="0" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">01</div>
+                    <h3 class="font-semibold mb-2">Por Que IA Pessoal</h3>
+                    <p class="text-sm text-gray-400">Entenda como ter uma IA pessoal muda tudo</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="50" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">02</div>
+                    <h3 class="font-semibold mb-2">O Que é Clawdbot</h3>
+                    <p class="text-sm text-gray-400">Como funciona a plataforma por baixo dos panos</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">03</div>
+                    <h3 class="font-semibold mb-2">Instalação</h3>
+                    <p class="text-sm text-gray-400">Passo a passo para qualquer sistema</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="150" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">04</div>
+                    <h3 class="font-semibold mb-2">Configuração</h3>
+                    <p class="text-sm text-gray-400">Otimize seu setup inicial</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">05</div>
+                    <h3 class="font-semibold mb-2">WhatsApp</h3>
+                    <p class="text-sm text-gray-400">Conecte em minutos</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="250" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">06</div>
+                    <h3 class="font-semibold mb-2">Casos de Uso</h3>
+                    <p class="text-sm text-gray-400">10 exemplos práticos do dia a dia</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">07</div>
+                    <h3 class="font-semibold mb-2">Automações</h3>
+                    <p class="text-sm text-gray-400">Crie workflows que trabalham sozinhos</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="350" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">08</div>
+                    <h3 class="font-semibold mb-2">Dicas Avançadas</h3>
+                    <p class="text-sm text-gray-400">Tire o máximo da sua IA</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">09</div>
+                    <h3 class="font-semibold mb-2">Troubleshooting</h3>
+                    <p class="text-sm text-gray-400">Resolva problemas comuns</p>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="450" class="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-primary-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-primary-500/30 mb-3 group-hover:text-primary-500/50 transition-colors">10</div>
+                    <h3 class="font-semibold mb-2">Próximos Passos</h3>
+                    <p class="text-sm text-gray-400">Comunidade e evolução contínua</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para Quem É Section -->
+    <section class="py-20 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Para Quem É -->
+                <div data-aos="fade-right">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">✅</span>
+                        Pra Quem É Esse Ebook
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-green-500/5 rounded-xl p-4 border border-green-500/10">
+                            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-xl">💻</div>
+                            <div>
+                                <div class="font-semibold">Desenvolvedores</div>
+                                <div class="text-sm text-gray-400">Que querem automatizar o dia a dia</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-green-500/5 rounded-xl p-4 border border-green-500/10">
+                            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-xl">🚀</div>
+                            <div>
+                                <div class="font-semibold">Empreendedores</div>
+                                <div class="text-sm text-gray-400">Que precisam de um assistente sem contratar</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-green-500/5 rounded-xl p-4 border border-green-500/10">
+                            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-xl">🔬</div>
+                            <div>
+                                <div class="font-semibold">Entusiastas de Tech</div>
+                                <div class="text-sm text-gray-400">Curiosos sobre IA na prática</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-green-500/5 rounded-xl p-4 border border-green-500/10">
+                            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-xl">⏰</div>
+                            <div>
+                                <div class="font-semibold">Profissionais Ocupados</div>
+                                <div class="text-sm text-gray-400">Que querem ganhar tempo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Para Quem NÃO É -->
+                <div data-aos="fade-left">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center">❌</span>
+                        Pra Quem NÃO É
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-red-500/5 rounded-xl p-4 border border-red-500/10">
+                            <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-xl">🪄</div>
+                            <div>
+                                <div class="font-semibold">Quem Espera Mágica</div>
+                                <div class="text-sm text-gray-400">Resultados vêm com ação, não com fórmula mágica</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-red-500/5 rounded-xl p-4 border border-red-500/10">
+                            <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-xl">⏳</div>
+                            <div>
+                                <div class="font-semibold">Sem 30 Minutos</div>
+                                <div class="text-sm text-gray-400">Precisa de pelo menos 30 min pra configurar</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 bg-red-500/5 rounded-xl p-4 border border-red-500/10">
+                            <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-xl">📱</div>
+                            <div>
+                                <div class="font-semibold">Sem Computador</div>
+                                <div class="text-sm text-gray-400">A IA precisa rodar localmente no seu PC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preço Section -->
+    <section class="py-20 relative overflow-hidden" id="preco">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/20 to-purple-900/20"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/20 rounded-full px-4 py-2 mb-6">
+                    <span class="text-yellow-400">⚡</span>
+                    <span class="text-sm text-yellow-400">Preço de Lançamento - Por Tempo Limitado</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold">Investimento</h2>
+            </div>
+
+            <div data-aos="zoom-in" class="bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-primary-500/30 glow">
+                <div class="text-center">
+                    <div class="mb-6">
+                        <span class="text-gray-400 text-xl line-through">De R$ 97</span>
+                    </div>
+
+                    <div class="mb-2">
+                        <span class="text-sm text-gray-400">por apenas</span>
+                    </div>
+
+                    <div class="text-6xl sm:text-7xl font-bold bg-gradient-to-r from-primary-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+                        R$ 47
+                    </div>
+
+                    <p class="text-gray-400 mb-8">ou 12x de R$ 4,70</p>
+
+                    <a href="#" class="hotmart-fb inline-flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white px-10 py-5 rounded-full text-xl font-bold transition-all hover:scale-105 pulse-glow w-full sm:w-auto"
+                       data-hotmart-product-id="SEU_PRODUCT_ID"
+                       data-hotmart-product-price="47.00">
+                        QUERO MINHA IA PESSOAL AGORA
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </a>
+
+                    <p class="text-sm text-gray-500 mt-4">Acesso imediato após a compra</p>
+
+                    <div class="flex flex-wrap items-center justify-center gap-6 mt-8 pt-8 border-t border-gray-800">
+                        <div class="flex items-center gap-2 text-sm text-gray-400">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Compra Segura</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-400">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>Acesso Imediato</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-400">
+                            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                            <span>7 Dias de Garantia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia Section -->
+    <section class="py-20 bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div data-aos="fade-up" class="bg-gradient-to-r from-green-900/30 to-emerald-900/30 rounded-3xl p-8 sm:p-12 border border-green-500/30 text-center">
+                <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">🛡️</div>
+
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4">Garantia Total de 7 Dias</h2>
+
+                <p class="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
+                    Se por qualquer motivo você não gostar, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+                </p>
+
+                <p class="text-green-400 font-semibold text-lg">O risco é todo nosso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20" id="faq">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Perguntas Frequentes</h2>
+                <p class="text-gray-400">Tire suas dúvidas</p>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up">
+                <div class="faq-item bg-gray-900/50 rounded-2xl border border-gray-800 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold">Preciso saber programar?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-400">Não! O guia é passo a passo, com screenshots. Se você sabe usar o terminal básico, consegue.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-900/50 rounded-2xl border border-gray-800 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold">Funciona no Windows?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-400">Sim! Via WSL (Windows Subsystem for Linux). Ensinamos no ebook como configurar tudo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-900/50 rounded-2xl border border-gray-800 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold">Quanto custa manter a IA rodando?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-400">Cerca de R$ 20-50/mês dependendo do uso (custo da API). Muito menos que contratar um assistente!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-900/50 rounded-2xl border border-gray-800 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold">A IA acessa meus dados?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-400">Tudo roda localmente no seu computador. Seus dados ficam com você, sob seu controle total.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-gray-900/50 rounded-2xl border border-gray-800 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+                        <span class="font-semibold">E se eu tiver dúvidas?</span>
+                        <svg class="faq-icon w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-400">O ebook tem um capítulo inteiro de troubleshooting + você terá acesso à comunidade para tirar dúvidas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/30 to-purple-900/30"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%236366f1\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                    Por Menos de R$ 50, Você Aprende a:
+                </h2>
+
+                <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10">
+                    <div class="flex items-center gap-3 bg-gray-900/50 rounded-xl p-4 justify-center">
+                        <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span class="font-medium">Ter um assistente pessoal 24/7</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-900/50 rounded-xl p-4 justify-center">
+                        <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span class="font-medium">Automatizar tarefas repetitivas</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-900/50 rounded-xl p-4 justify-center">
+                        <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span class="font-medium">Economizar horas toda semana</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-gray-900/50 rounded-xl p-4 justify-center">
+                        <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <span class="font-medium">Usar IA de forma prática</span>
+                    </div>
+                </div>
+
+                <a href="#preco" class="hotmart-fb inline-flex items-center justify-center gap-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 text-white px-10 py-5 rounded-full text-xl font-bold transition-all hover:scale-105 pulse-glow"
+                   data-hotmart-product-id="SEU_PRODUCT_ID"
+                   data-hotmart-product-price="47.00">
+                    COMEÇAR AGORA
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-950 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🤖</span>
+                    <span class="font-bold text-xl bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">Clawdbot</span>
+                </div>
+
+                <p class="text-gray-500 text-sm text-center">
+                    &copy; 2025 Clawdbot. Todos os direitos reservados.
+                </p>
+
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <a href="#" class="hover:text-gray-300 transition-colors">Termos</a>
+                    <a href="#" class="hover:text-gray-300 transition-colors">Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('bg-gray-950/95');
+            } else {
+                header.classList.remove('bg-gray-950/95');
+            }
+        });
+    </script>
+
+    <!-- Hotmart Tracking (placeholder) -->
+    <!-- <script src="https://static.hotmart.com/checkout/widget.min.js"></script> -->
+</body>
+</html>
