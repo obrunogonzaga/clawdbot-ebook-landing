@@ -61,23 +61,29 @@ jobs:
           script: |
             const prNumber = context.payload.pull_request.number;
             const image = `ghcr.io/${context.repo.owner}/${context.repo.repo}:pr-${prNumber}`;
+            const previewUrl = `preview-${prNumber}.89.167.22.57.nip.io`;
             const body = `## 🚀 Preview Ready!
             
             **Imagem:** \`${image}\`
             
             **Para testar:**
             \`\`\`bash
-            # No servidor, trocar a tag temporariamente:
-            docker pull ${image}
-            docker stop ebook-landing
-            docker run -d --name ebook-preview --network proxy \\
-              -l "traefik.enable=true" \\
-              -l "traefik.http.routers.preview.rule=Host(\\\`preview.89.167.22.57.nip.io\\\`)" \\
-              -l "traefik.http.routers.preview.entrypoints=web" \\
-              ${image}
+            # Deploy preview PR #${prNumber}
+            ssh root@89.167.22.57 "docker rm -f ebook-preview-${prNumber} 2>/dev/null; \\
+              docker pull ${image} && \\
+              docker run -d --name ebook-preview-${prNumber} --network proxy \\
+                -l 'traefik.enable=true' \\
+                -l 'traefik.http.routers.preview-${prNumber}.rule=Host(\\\`${previewUrl}\\\`)' \\
+                -l 'traefik.http.routers.preview-${prNumber}.entrypoints=web' \\
+                ${image}"
             \`\`\`
             
-            **URL de preview:** http://preview.89.167.22.57.nip.io
+            **URL de preview:** http://${previewUrl}
+            
+            **Cleanup após merge:**
+            \`\`\`bash
+            ssh root@89.167.22.57 "docker rm -f ebook-preview-${prNumber}"
+            \`\`\`
             
             Após validar, mergear este PR para deploy em produção.`;
             
